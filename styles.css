@@ -1,0 +1,59 @@
+:root {
+  --color-gray: #ecf0f3;
+  --half-inset-boxShadow: inset -6px -6px 13px #fff,
+  6px 6px 13px rgba(0, 0, 0, 0.6);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--color-gray);
+}
+main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-gray);
+}
+
+section {
+  box-shadow: 6px 6px 13px #fff, 6px 6px 13px rgba(0, 0, 0, 0.6);
+  border-radius: 28px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 66px);
+}
+input {
+  grid-column: span 4;
+  height: 68px;
+  width: 258px;
+  box-shadow: inset -6px -6px 13px #fff,
+  inset 6px 6px 13px rgba(0, 0, 0, 0.6);
+  background-color: var(--color-gray);
+  border-radius: 32px;
+  border: none;
+  color: rgb(26, 25, 25);
+  text-align: end;
+  margin: 40px 0 30px 0;
+  padding: 20px;
+  font-size: 40px;
+}
+button {
+    box-shadow: var(--half-inset-boxShadow);
+    background-color: var(--color-gray);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    margin: 10px;
+    font-size: 20px;
+}
+.equal {
+    width: 120px;
+    border-radius: 42px;
+    box-shadow: var(--half-inset-boxShadow);
+    background-color: var(--color-gray);
+}
