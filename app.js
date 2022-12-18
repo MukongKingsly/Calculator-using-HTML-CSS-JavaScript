@@ -1,71 +1,242 @@
-let result = document.getElementById("inputext");
-const btn = document.querySelectorAll(".btn");
+let screenValue = "0";
+let firstValue = null;
+let secondValue = null;
+let firstOperator = null;
+let secondOperator = null;
+let result = null;
+const buttons = document.querySelectorAll("button");
 
-/*============ For getting the value of btn, Here we use for loop ============*/
+window.addEventListener("keydown", (event) => {
+  const key = document.querySelector(`button[data-value='${event.key}']`);
+  key.click();
+});
 
-for (item of btn) {
-    item.addEventListener("click", (e) => {
-        btntext = e.target.innerText;
+const operate = (x, y, operator) => {
+  if (operator === "+") {
+    return x + y;
+  } else if (operator === "-") {
+    return x - y;
+  } else if (operator === "*") {
+    return x * y;
+  } else if (operator === "%") {
+    return x % y;
+  } else if (operator === "power") {
+    return Math.pow(x, y);
+  } else if (operator === "/") {
+    if (y === 0) {
+      return "Infinity";
+    } else {
+      return x / y;
+    }
+  }
+};
+function operand(number) {
+    if (firstOperator === null) {
+      if (screenValue === "0" || screenValue === 0) {
+        //1st click - handles first number input
+        screenValue = number;
+      } else if (screenValue === firstValue) {
+        //starts new operation after inputEquals()
+        screenValue = number;
+      } else {
+        screenValue += number;
+      }
+    } else {
+      //3rd/5th click - inputs to secondValue
+      if (screenValue === firstValue) {
+        screenValue = number;
+      } else {
+        screenValue += number;
+      }
+    }
+  }
+const updateDisplay = () => {
+  const display = document.getElementById("display");
+  display.innerText = screenValue;
+  if (screenValue.length > 12) {
+    display.innerText = screenValue.substring(0, 12);
+  }
+};
 
-        if (btntext == "*") {
-            btntext = "*";
-        }
+updateDisplay();
 
-        if (btntext == "/") {
-            btntext = "/";
-        }
-        result.value += btntext;
+const btnClick = () => {
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function () {
+      if (buttons[i].classList.contains("number")) {
+        operand(buttons[i].value);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("operator")) {
+        inputOperator(buttons[i].value);
+      } else if (buttons[i].classList.contains("equals")) {
+        inputEquals();
+        updateDisplay();
+      } else if (buttons[i].classList.contains("decimal")) {
+        decimal(buttons[i].value);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("pm")) {
+        pm(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("del")) {
+        inputdel(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("sin")) {
+        sin(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("cos")) {
+        cos(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("tan")) {
+        tan(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("sqrt")) {
+        sqrt(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("log")) {
+        log(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("In")) {
+        In(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("eulerNumber")) {
+        eulerNumber(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("eulerNumber")) {
+        eulerNumber(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("pi")) {
+        pi(screenValue);
+        updateDisplay();
+      } else if (buttons[i].classList.contains("clear")) clearDisplay();
+      updateDisplay();
     });
+  }
+};
+
+btnClick();
+
+
+function inputOperator(operator) {
+  if (firstOperator != null && secondOperator === null) {
+    //4th click - handles input of second operator
+    secondOperator = operator;
+    secondValue = screenValue;
+    result = operate(Number(firstValue), Number(secondValue), firstOperator);
+    screenValue = round(result, 12).toString();
+    firstValue = screenValue;
+    result = null;
+  } else if (firstOperator != null && secondOperator != null) {
+    //6th click - new secondOperator
+    secondValue = screenValue;
+    result = operate(Number(firstValue), Number(secondValue), secondOperator);
+    secondOperator = operator;
+    screenValue = round(result, 12).toString();
+    firstValue = screenValue;
+    result = null;
+  } else {
+    //2nd click - handles first operator input
+    firstOperator = operator;
+    firstValue = screenValue;
+  }
 }
 
-function sin() {
-    result.value = Math.sin(result.value);
+function inputEquals() {
+  //hitting equals doesn't display undefined before operate()
+  if (!firstOperator) {
+    screenValue = screenValue;
+  } else if (secondOperator) {
+    //handles final result
+    secondValue = screenValue;
+    result = operate(Number(firstValue), Number(secondValue), secondOperator);
+    if (result === "Infinity") {
+      screenValue = "Infinity";
+    } else {
+      screenValue = round(result, 12).toString();
+      firstValue = screenValue;
+      secondValue = null;
+      firstOperator = null;
+      secondOperator = null;
+      result = null;
+    }
+  } else {
+    //handles first operation
+    secondValue = screenValue;
+    result = operate(Number(firstValue), Number(secondValue), firstOperator);
+    if (result === "Infinity") {
+      screenValue = "Infinity";
+    } else {
+      screenValue = round(result, 12).toString();
+      firstValue = screenValue;
+      secondValue = null;
+      firstOperator = null;
+      secondOperator = null;
+      result = null;
+    }
+  }
 }
 
-function cos() {
-    result.value = Math.cos(result.value);
+function decimal(decimalPoint) {
+  if (screenValue === firstValue || screenValue === secondValue) {
+    screenValue = "0";
+    screenValue += decimalPoint;
+  } else if (!screenValue.includes(decimalPoint)) {
+    screenValue += decimalPoint;
+  }
 }
 
-function tan() {
-    result.value = Math.tan(result.value);
+function inputdel(num) {
+  screenValue = parseFloat(num.toString().slice(0, -1));
 }
 
-function pow() {
-    result.value = Math.pow(result.value, 2);
+function sin(num) {
+  screenValue = Math.sin(num);
+}
+function cos(num) {
+  screenValue = Math.cos(num);
+}
+function tan(num) {
+  screenValue = Math.tan(num);
 }
 
-function sqrt() {
-    result.value = Math.sqrt(result.value, 2);
+function pm(num) {
+  screenValue = (num * -1).toString();
 }
 
-function log() {
-    result.value = Math.log(result.value);
+function sqrt(num) {
+  screenValue = Math.sqrt(num);
+}
+
+// Convert to base 10 by dividing to Math.LN10
+function log(num) {
+  screenValue = Math.log(num) / Math.LN10;
+}
+
+function In(num) {
+  screenValue = Math.log(num);
+}
+function eulerNumber() {
+  screenValue = Math.E.toFixed(10);
 }
 
 function pi() {
-    result.value = Math.PI.toFixed(10);
+  screenValue = Math.PI.toFixed(10);
+}
+function clearDisplay() {
+  screenValue = "0";
+  firstValue = null;
+  secondValue = null;
+  firstOperator = null;
+  secondOperator = null;
+  result = null;
 }
 
-function e() {
-    result.value = Math.E.toFixed(10);
+function inputBackspace() {
+  if (firstValue != null) {
+    firstValue = null;
+    updateDisplay();
+  }
 }
 
-let operate = () => {
-    try {
-        result.value = eval(result.value)
-    } catch(err) {
-        result.value = "Enter valid input";
-    }
-};
-
-function clr() {
-    result.value = "";
-}
-
-function del() {
-    result.value = result.value.slice(0, -1);
-}
-
-function sin() {
-    result.value = Math.sin(result.value)
+function round(num, places) {
+  return parseFloat(Math.round(num + "e" + places) + "e-" + places);
 }

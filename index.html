@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css">
-    <script src="./app.js" defer></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" type="text/css">
+  <script src="./app.js" defer></script>
+  <title>Document</title>
 </head>
+
 <body>
-    <main>
-        <section>
-            <input type="text" name="" id="inputext" placeholder="0">
-            <button onclick="clr()">C</button>
-            <button class="btn">(</button>
-            <button class="btn">)</button>
-            <button onclick="del()">DEL</button>
-            <button class="btn">%</button>
-            <button class="btn">/</button>
-            <button onclick="sin()">sin</button>
-            <button onclick="sqrt()">&#8730;</button>
-            <button class="btn">7</button>
-            <button class="btn">8</button>
-            <button class="btn">9</button>
-            <button class="btn">*</button>
-            <button onclick="cos()">cos</button>
-            <button onclick="e()">e</button>
-            <button class="btn">4</button>
-            <button class="btn">5</button>
-            <button class="btn">6</button>
-            <button class="btn">-</button>
-            <button onclick="tan()">tan</button>
-            <button onclick="pow()">x<sup>y</sup</button>
-            <button class="btn">1</button>
-            <button class="btn">2</button>
-            <button class="btn">3</button>
-            <button class="btn">+</button>
-            <button onclick="pi()">&#960;</button>
-            <button onclick="log()">log</button>
-            <button class="btn">.</button>
-            <button class="btn">0</button>
-            <button class="equal" onclick="operate()">=</button>
-        </section>
-    </main>
+  <main>
+    <section>
+      <div id="display"></div>
+      <div>
+        <button class="clear" value="clear" data-key="8">AC</button>
+        <button class="In" value="In">In</button>
+        <button class="pm" value="pm" data-key="0177">+/-</button>
+        <button class="del" value="del" data-key="37">DEL</button>
+        <button class="operator" value="%" data-key="37">%</button>
+        <button class="operator" value="/" data-key="246">÷</button>
+        <button class="sin" value="sin">sin</button>
+        <button class="sqrt" value="sqrt" data-key="251">&#8730;</button>
+        <button class="number" value="7" data-key="55">7</button>
+        <button class="number" value="8" data-key="56">8</button>
+        <button class="number" value="9" data-key="57">9</button>
+        <button class="operator" value="*" data-key="106">&times;</button>
+
+        <button class="cos" value="cos">cos</button>
+        <button class="eulerNumber" value="eulerNumber" data-key="101">e</button>
+        <button class="number" value="4" data-key="52">4</button>
+        <button class="number" value="5" data-key="53">5</button>
+        <button class="number" value="6" data-key="54">6</button>
+        <button class="operator" value="-" data-key="109">-</button>
+        <button class="tan" value="tan">tan</button>
+        <button class="operator" value="power" data-key="">x<sup>y</sup></button>
+        <!-- <button>x<sup>y</sup</button> -->
+        <button class="number" value="1" data-key="49">1</button>
+        <button class="number" value="2" data-key="50">2</button>
+        <button class="number" value="3" data-key="51">3</button>
+        <button class="operator" value="+" data-key="43">+</button>
+        <button class="pi" value="pi" data-key="210">&#960;</button>
+        <button class="log" value="log">log</button>
+        <button class="decimal" value="." data-key="46">.</button>
+        <button id ="zero" class="number" value="0" data-key="48">0</button>
+        <button class="equals" value="=" data-key="61">=</button>
+      </div>
+    </section>
+  </main>
 </body>
+
 </html>

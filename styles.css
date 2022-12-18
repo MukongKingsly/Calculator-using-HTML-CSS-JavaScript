@@ -20,26 +20,32 @@ main {
 }
 
 section {
-  box-shadow: 6px 6px 13px #fff, 6px 6px 13px rgba(0, 0, 0, 0.6);
+  box-shadow: 6px 6px 23px #fff, 6px 6px 13px rgba(0, 0, 0, 0.6);
   border-radius: 28px;
+  padding: 26px;
+}
+
+section > div:nth-of-type(2) {
   padding: 16px;
   display: grid;
   grid-template-columns: repeat(6, 66px);
 }
-input {
+#display {
   grid-column: span 6;
-  height: 68px;
-  width: 395px;
+  height: 120px;
+  width: 435px;
   box-shadow: inset -6px -6px 13px #fff,
   inset 6px 6px 13px rgba(0, 0, 0, 0.6);
   background-color: var(--color-gray);
   border-radius: 32px;
   border: none;
   color: rgb(26, 25, 25);
-  text-align: end;
   margin: 40px 0 30px 0;
   padding: 20px;
   font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 button {
     box-shadow: var(--half-inset-boxShadow);
@@ -51,7 +57,7 @@ button {
     margin: 10px;
     font-size: 20px;
 }
-.equal {
+.equals {
     width: 120px;
     border-radius: 42px;
     box-shadow: var(--half-inset-boxShadow);
