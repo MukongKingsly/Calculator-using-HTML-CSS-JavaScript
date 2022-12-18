@@ -1,3 +1,10 @@
+const switchInput = document.getElementById("switchInput");
+const bodyElement = document.querySelector("body")
+
+switchInput.addEventListener("click", () => {
+  bodyElement.classList.toggle("bg-dark")
+});
+
 let screenValue = "0";
 let firstValue = null;
 let secondValue = null;
@@ -147,7 +154,7 @@ function inputEquals() {
   } else if (secondOperator) {
     //handles final result
     secondValue = screenValue;
-    result = operate(Number(firstValue), Number(secondValue), secondOperator).substring(0, 12);
+    result = operate(Number(firstValue), Number(secondValue), secondOperator);
     if (result === "Infinity") {
       screenValue = "Infinity";
     } else {
@@ -215,7 +222,7 @@ function In(num) {
   screenValue = (Math.log(num)).toFixed(12);
 }
 function eulerNumber() {
-  screenValue = Math.E.toFixed(10);
+  screenValue = Math.E.toFixed(12);
 }
 
 function pi() {
@@ -233,3 +240,4 @@ function clearDisplay() {
 function round(num, places) {
   return parseFloat(Math.round(num + "e" + places) + "e-" + places);
 }
+
