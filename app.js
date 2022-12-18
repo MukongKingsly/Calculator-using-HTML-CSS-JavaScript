@@ -78,7 +78,7 @@ const btnClick = () => {
         pm(screenValue);
         updateDisplay();
       } else if (buttons[i].classList.contains("del")) {
-        inputdel(screenValue);
+        del(screenValue);
         updateDisplay();
       } else if (buttons[i].classList.contains("sin")) {
         sin(screenValue);
@@ -147,7 +147,7 @@ function inputEquals() {
   } else if (secondOperator) {
     //handles final result
     secondValue = screenValue;
-    result = operate(Number(firstValue), Number(secondValue), secondOperator);
+    result = operate(Number(firstValue), Number(secondValue), secondOperator).substring(0, 12);
     if (result === "Infinity") {
       screenValue = "Infinity";
     } else {
@@ -184,18 +184,18 @@ function decimal(decimalPoint) {
   }
 }
 
-function inputdel(num) {
+function del(num) {
   screenValue = parseFloat(num.toString().slice(0, -1));
 }
 
 function sin(num) {
-  screenValue = Math.sin(num);
+  screenValue = Math.sin(num).toFixed(12);
 }
 function cos(num) {
-  screenValue = Math.cos(num);
+  screenValue = Math.cos(num).toFixed(12);
 }
 function tan(num) {
-  screenValue = Math.tan(num);
+  screenValue = Math.tan(num).toFixed(12);
 }
 
 function pm(num) {
@@ -203,23 +203,23 @@ function pm(num) {
 }
 
 function sqrt(num) {
-  screenValue = Math.sqrt(num);
+  screenValue = Math.sqrt(num).toFixed(12);
 }
 
 // Convert to base 10 by dividing to Math.LN10
 function log(num) {
-  screenValue = Math.log(num) / Math.LN10;
+  screenValue = (Math.log(num) / Math.LN10).toFixed(12);
 }
 
 function In(num) {
-  screenValue = Math.log(num);
+  screenValue = (Math.log(num)).toFixed(12);
 }
 function eulerNumber() {
   screenValue = Math.E.toFixed(10);
 }
 
 function pi() {
-  screenValue = Math.PI.toFixed(10);
+  screenValue = Math.PI.toFixed(12);
 }
 function clearDisplay() {
   screenValue = "0";
@@ -228,13 +228,6 @@ function clearDisplay() {
   firstOperator = null;
   secondOperator = null;
   result = null;
-}
-
-function inputBackspace() {
-  if (firstValue != null) {
-    firstValue = null;
-    updateDisplay();
-  }
 }
 
 function round(num, places) {
