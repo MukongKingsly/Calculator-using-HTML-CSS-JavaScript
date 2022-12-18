@@ -129,7 +129,7 @@ function inputOperator(operator) {
     secondOperator = operator;
     secondValue = screenValue;
     result = operate(Number(firstValue), Number(secondValue), firstOperator);
-    screenValue = round(result, 12).toString();
+    screenValue = round(result, 14).toString();
     firstValue = screenValue;
     result = null;
   } else if (firstOperator != null && secondOperator != null) {
@@ -137,7 +137,7 @@ function inputOperator(operator) {
     secondValue = screenValue;
     result = operate(Number(firstValue), Number(secondValue), secondOperator);
     secondOperator = operator;
-    screenValue = round(result, 12).toString();
+    screenValue = round(result, 14).toString();
     firstValue = screenValue;
     result = null;
   } else {
@@ -158,7 +158,7 @@ function inputEquals() {
     if (result === "Infinity") {
       screenValue = "Infinity";
     } else {
-      screenValue = round(result, 12).toString();
+      screenValue = round(result, 14).toString();
       firstValue = screenValue;
       secondValue = null;
       firstOperator = null;
@@ -172,7 +172,7 @@ function inputEquals() {
     if (result === "Infinity") {
       screenValue = "Infinity";
     } else {
-      screenValue = round(result, 12).toString();
+      screenValue = round(result, 14).toString();
       firstValue = screenValue;
       secondValue = null;
       firstOperator = null;
@@ -192,17 +192,17 @@ function decimal(decimalPoint) {
 }
 
 function del(num) {
-  screenValue = parseFloat(num.toString().slice(0, -1));
+  screenValue = num.toString().slice(0, -1);
 }
 
 function sin(num) {
-  screenValue = Math.sin(num).toFixed(12);
+  screenValue = Math.sin(num).toFixed(12).toString();
 }
 function cos(num) {
-  screenValue = Math.cos(num).toFixed(12);
+  screenValue = Math.cos(num).toFixed(12).toString();
 }
 function tan(num) {
-  screenValue = Math.tan(num).toFixed(12);
+  screenValue = Math.tan(num).toFixed(12).toString();
 }
 
 function pm(num) {
@@ -210,23 +210,23 @@ function pm(num) {
 }
 
 function sqrt(num) {
-  screenValue = Math.sqrt(num).toFixed(12);
+  screenValue = Math.sqrt(num).toFixed(12).toString();
 }
 
 // Convert to base 10 by dividing to Math.LN10
 function log(num) {
-  screenValue = (Math.log(num) / Math.LN10).toFixed(12);
+  screenValue = (Math.log(num) / Math.LN10).toFixed(12).toString();
 }
 
 function In(num) {
-  screenValue = (Math.log(num)).toFixed(12);
+  screenValue = (Math.log(num)).toFixed(12).toString();
 }
 function eulerNumber() {
-  screenValue = Math.E.toFixed(12);
+  screenValue = (Math.E.toFixed(12)).toString();
 }
 
 function pi() {
-  screenValue = Math.PI.toFixed(12);
+  screenValue = (Math.PI.toFixed(12)).toString();
 }
 function clearDisplay() {
   screenValue = "0";
