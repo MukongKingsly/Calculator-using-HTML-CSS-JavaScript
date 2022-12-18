@@ -14,7 +14,7 @@ let result = null;
 const buttons = document.querySelectorAll("button");
 
 window.addEventListener("keydown", (event) => {
-  const key = document.querySelector(`button[data-value='${event.key}']`);
+  const key = document.querySelector(`button[data-key='${event.key}']`);
   key.click();
 });
 
@@ -69,7 +69,7 @@ updateDisplay();
 
 const btnClick = () => {
   for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", function () {
+    buttons[i].addEventListener("click", () => {
       if (buttons[i].classList.contains("number")) {
         operand(buttons[i].value);
         updateDisplay();
