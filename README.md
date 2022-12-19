@@ -1,6 +1,6 @@
 # Calculator-using-HTML-CSS-JavaScript
 
-https://mukongkingsly.github.io/Calculator-using-HTML-CSS-JavaScript/
+https://mukongkingsly.github.io/Rock-Paper-and-Scissors/
 
 ## Keycodes were taken from
 
