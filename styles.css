@@ -1,7 +1,7 @@
 :root {
   --color-gray: #ecf0f3;
   --half-inset-boxShadow: inset -6px -6px 13px #fff,
-  6px 6px 13px rgba(0, 0, 0, 0.6);
+    6px 6px 13px rgba(0, 0, 0, 0.6);
 }
 * {
   margin: 0;
@@ -16,6 +16,7 @@ body {
 }
 main {
   height: 100vh;
+  min-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,9 +28,8 @@ main {
 }
 /* ================= Switch =============================== */
 main > section:nth-of-type(1) {
-  /* align-self: flex-end; */
   position: absolute;
-  top: 50px;
+  top: 20px;
   right: 50px;
 }
 /* The switch - the box around the slider */
@@ -56,8 +56,8 @@ main > section:nth-of-type(1) {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -68,16 +68,16 @@ main > section:nth-of-type(1) {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
@@ -97,7 +97,6 @@ input:checked + .slider:before {
 
 /* ============================ Calculator ============================= */
 
-
 .calculator {
   box-shadow: 6px 6px 23px #fff, 6px 6px 13px rgba(0, 0, 0, 0.6);
   border-radius: 28px;
@@ -113,8 +112,7 @@ input:checked + .slider:before {
   grid-column: span 6;
   height: 120px;
   width: 435px;
-  box-shadow: inset -6px -6px 13px #fff,
-  inset 6px 6px 13px rgba(0, 0, 0, 0.6);
+  box-shadow: inset -6px -6px 13px #fff, inset 6px 6px 13px rgba(0, 0, 0, 0.6);
   background-color: var(--color-gray);
   border-radius: 32px;
   border: none;
@@ -127,14 +125,14 @@ input:checked + .slider:before {
   justify-content: flex-end;
 }
 button {
-    box-shadow: var(--half-inset-boxShadow);
-    background-color: var(--color-gray);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    border: none;
-    margin: 10px;
-    font-size: 20px;
+  box-shadow: var(--half-inset-boxShadow);
+  background-color: var(--color-gray);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: none;
+  margin: 10px;
+  font-size: 20px;
 }
 
 button:hover {
@@ -142,8 +140,73 @@ button:hover {
   background-color: #e2e2e2;
 }
 .equals {
-    width: 120px;
-    border-radius: 42px;
-    box-shadow: var(--half-inset-boxShadow);
-    background-color: var(--color-gray);
+  width: 120px;
+  border-radius: 42px;
+  box-shadow: var(--half-inset-boxShadow);
+  background-color: var(--color-gray);
+}
+
+@media (width < 676px) {
+  .calculator > div:nth-of-type(2) {
+    padding: 12px;
+    grid-template-columns: repeat(6, 55px);
+  }
+  button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  .equals {
+    width: 96px;
+  }
+  #display {
+    height: 100px;
+    width: 320px;
+    font-size: 35px;
+    margin: 20px 0 0 20px;
+  }
+}
+
+@media (width < 441px) {
+  .calculator {
+    border-radius: 20px;
+    padding: 7px;
+  }
+  #display {
+    height: 70px;
+    font-size: 28px;
+    border-radius: 23px;
+  }
+  main > section:nth-of-type(1) {
+    right: 20px;
+  }
+}
+
+@media (width < 381px) {
+  .calculator > div:nth-of-type(2) {
+    padding: 8px;
+    grid-template-columns: repeat(6, 45px);
+  }
+  #display {
+    height: 70px;
+    width: 260px;
+    font-size: 30px;
+    margin-right: 16px;
+  }
+  .equals {
+    width: 75px;
+    border-radius: 20px;
+  }
+  button {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+}
+
+@media (width < 331px) {
+  main > section:nth-of-type(1) {
+    right: 0px;
+    margin-right: 10px;
+  }
 }
